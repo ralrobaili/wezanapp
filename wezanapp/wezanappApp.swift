@@ -17,7 +17,6 @@ struct WezanAppApp: App {
     }
 }
 
-// MARK: – Root: يقرر يعرض Onboarding أو التطبيق
 struct RootView: View {
     @EnvironmentObject var settings: SettingsStore
     @EnvironmentObject var health  : HealthKitService

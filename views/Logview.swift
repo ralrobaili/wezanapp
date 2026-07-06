@@ -32,7 +32,6 @@ struct LogView: View {
         }
     }
 
-    // MARK: – List
     private var logList: some View {
         List {
             ForEach(doseStore.groupedByDay, id: \.key) { group in
@@ -51,7 +50,6 @@ struct LogView: View {
                             }
                     }
                 } header: {
-                    // ✅ header محاذاة يمين
                     Text(group.key)
                         .font(.wCaption)
                         .foregroundColor(.wLabelSec)
@@ -66,10 +64,8 @@ struct LogView: View {
         .environment(\.layoutDirection, .rightToLeft)
     }
 
-    // MARK: – Row — محاذاة يمين كاملة
     private func doseRow(_ dose: DoseRecord) -> some View {
         HStack(spacing: 12) {
-            // الوقت — يسار
             VStack(alignment: .leading, spacing: 2) {
                 Text(timeStr(dose.timestamp))
                     .font(.system(size: 12, weight: .medium, design: .monospaced))
@@ -83,7 +79,6 @@ struct LogView: View {
 
             Spacer()
 
-            // المعلومات — يمين
             VStack(alignment: .trailing, spacing: 3) {
                 HStack(spacing: 6) {
                     Text(dose.insulinType.rawValue)
@@ -97,7 +92,6 @@ struct LogView: View {
                 }
             }
 
-            // أيقونة النوع
             ZStack {
                 Circle()
                     .fill(dose.insulinType.color.opacity(0.12))
@@ -111,7 +105,6 @@ struct LogView: View {
         .padding(.vertical, 12)
     }
 
-    // MARK: – Empty
     private var emptyState: some View {
         VStack(spacing: 16) {
             Spacer()

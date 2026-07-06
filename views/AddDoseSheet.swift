@@ -13,7 +13,6 @@ struct AddDoseSheet: View {
             ScrollView {
                 VStack(spacing: 24) {
 
-                    // ── مستوى السكر الحالي
                     if let r = healthService.latestReading {
                         HStack(spacing: 10) {
                             Image(systemName: "drop.fill")
@@ -32,7 +31,6 @@ struct AddDoseSheet: View {
                         .clipShape(RoundedRectangle(cornerRadius: WRadius.md, style: .continuous))
                     }
 
-                    // ── عدد الوحدات فقط
                     WCard(bg: .wCard) {
                         VStack(spacing: 24) {
                             Text("عدد الوحدات")
@@ -53,7 +51,6 @@ struct AddDoseSheet: View {
                                 }
                                 .buttonStyle(.plain)
 
-                                // الرقم
                                 VStack(spacing: 2) {
                                     Text(String(format: "%.0f", units))
                                         .font(.system(size: 72, weight: .bold, design: .rounded))
@@ -64,7 +61,6 @@ struct AddDoseSheet: View {
                                         .font(.wCaption).foregroundColor(.wLabelSec)
                                 }
 
-                                // زائد
                                 Button {
                                     withAnimation(.spring(duration: 0.2)) { units += 1 }
                                 } label: {
@@ -81,7 +77,6 @@ struct AddDoseSheet: View {
                                 .buttonStyle(.plain)
                             }
 
-                            // Presets
                             LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 4), spacing: 10) {
                                 ForEach([2.0,4.0,6.0,8.0,10.0,12.0,16.0,20.0], id: \.self) { p in
                                     Button {
@@ -123,7 +118,6 @@ struct AddDoseSheet: View {
     }
 
     private func save() {
-        // ✅ افتراضي دائماً سريع المفعول
         let d = DoseRecord(
             units        : units,
             insulinType  : .rapid,

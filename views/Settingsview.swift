@@ -15,17 +15,14 @@ struct SettingsView: View {
         NavigationView {
             List {
 
-                // ── Apple Health (بدون عنوان section)
                 Section {
                     healthKitRow
                 }
 
-                // ── وحدة السكر
                 Section("وحدة السكر") {
                     unitRow
                 }
 
-                // ── تصدير البيانات
                 Section("تصدير البيانات") {
                     exportRow
                 }
@@ -35,10 +32,8 @@ struct SettingsView: View {
             .background(Color.wBg.ignoresSafeArea())
             .navigationTitle("الإعدادات")
             .navigationBarTitleDisplayMode(.large)
-            // ✅ إخفاء زر "تخصيص"
             .toolbar(.hidden, for: .navigationBar)
             .safeAreaInset(edge: .top) {
-                // عنوان مخصص بدون أي أزرار
                 HStack {
                     Spacer()
                     Text("الإعدادات")
@@ -90,7 +85,6 @@ struct SettingsView: View {
         }
     }
 
-    // MARK: – وحدة السكر
     private var unitRow: some View {
         HStack(spacing: 10) {
             ForEach(GlucoseUnit.allCases, id: \.self) { u in
@@ -120,7 +114,6 @@ struct SettingsView: View {
         .padding(.vertical, 6)
     }
 
-    // MARK: – تصدير البيانات
     private var exportRow: some View {
         VStack(alignment: .trailing, spacing: 16) {
             Text("اختر الفترة الزمنية")

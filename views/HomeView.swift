@@ -44,7 +44,6 @@ struct HomeView: View {
             .animation(.spring(duration: 0.4), value: showToast)
             .navigationTitle("مستوى السكر")
             .navigationBarTitleDisplayMode(.large)
-            // ✅ أزلنا لوجو وزان من أعلى اليمين
         }
         .sheet(isPresented: $showAddDose) { AddDoseSheet() }
         .onAppear {
@@ -59,7 +58,6 @@ struct HomeView: View {
         .onDisappear { siriTimer?.invalidate() }
     }
 
-    // MARK: – Glucose Card
     private var glucoseCard: some View {
         WCard(padding: 20, bg: .wCard) {
             VStack(spacing: 0) {
@@ -120,7 +118,6 @@ struct HomeView: View {
         .shadow(color: Color.black.opacity(0.04), radius: 12, x: 0, y: 4)
     }
 
-    // MARK: – Dose Card
     private var doseCard: some View {
         WCard(padding: 20, bg: .wCard) {
             VStack(spacing: 12) {
@@ -150,7 +147,6 @@ struct HomeView: View {
         .shadow(color: Color.black.opacity(0.04), radius: 12, x: 0, y: 4)
     }
 
-    // MARK: – Chart Card
     private var chartCard: some View {
         WCard(padding: 20, bg: .wCard) {
             VStack(alignment: .trailing, spacing: 14) {
@@ -216,7 +212,6 @@ struct HomeView: View {
                     .frame(maxWidth: .infinity).padding(.vertical, 30)
                 }
 
-                // Insight
                 HStack(alignment: .top, spacing: 10) {
                     Image(systemName: "sparkles").font(.system(size: 13)).foregroundColor(.wPrimary)
                     VStack(alignment: .trailing, spacing: 3) {
@@ -236,7 +231,6 @@ struct HomeView: View {
         .shadow(color: Color.black.opacity(0.04), radius: 12, x: 0, y: 4)
     }
 
-    // MARK: – Helpers
     private func chartStat(label: String, value: String, color: Color) -> some View {
         VStack(spacing: 2) {
             Text(value).font(.system(size: 15, weight: .bold, design: .monospaced)).foregroundColor(color)
@@ -276,7 +270,7 @@ struct HomeView: View {
         if m < 1  { return "الآن" }
         if m < 60 { return "منذ \(m) دقيقة" }
         let h = m / 60
-        if h < 24 { return "منذ \(h) ساعة" }
+        if h < 24 { return "منذ \(h) ساعة" } //
         return "منذ \(h/24) يوم"
     }
     private func startSiriMonitor() {

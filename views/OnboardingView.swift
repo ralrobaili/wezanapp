@@ -52,7 +52,6 @@ struct OnboardingView: View {
 
             VStack(spacing: 0) {
 
-                // ── Pages
                 TabView(selection: $page) {
                     ForEach(pages.indices, id: \.self) { i in
                         pageView(pages[i])
@@ -62,7 +61,6 @@ struct OnboardingView: View {
                 .tabViewStyle(.page(indexDisplayMode: .never))
                 .animation(.spring(duration: 0.4), value: page)
 
-                // ── Dots
                 HStack(spacing: 8) {
                     ForEach(pages.indices, id: \.self) { i in
                         Capsule()
@@ -73,7 +71,6 @@ struct OnboardingView: View {
                 }
                 .padding(.bottom, 32)
 
-                // ── Button
                 Group {
                     if page < pages.count - 1 {
                         WPrimaryBtn("التالي", icon: "arrow.right") {
@@ -102,7 +99,6 @@ struct OnboardingView: View {
         VStack(spacing: 28) {
             Spacer()
 
-            // Icon / Logo
             ZStack {
                 Circle()
                     .fill(p.iconColor.opacity(0.12))
@@ -128,7 +124,6 @@ struct OnboardingView: View {
             }
             .shadow(color: p.iconColor.opacity(0.2), radius: 20, x: 0, y: 8)
 
-            // Text
             VStack(spacing: 14) {
                 Text(p.title)
                     .font(.system(size: 26, weight: .bold, design: .rounded))
@@ -142,7 +137,6 @@ struct OnboardingView: View {
                     .lineSpacing(5)
                     .padding(.horizontal, 32)
 
-                // Siri example chip
                 if p.icon == "waveform" {
                     HStack(spacing: 8) {
                         Image(systemName: "mic.fill")
@@ -165,7 +159,6 @@ struct OnboardingView: View {
     }
 }
 
-// MARK: – Model
 private struct OnboardPage {
     let icon     : String
     let iconColor: Color

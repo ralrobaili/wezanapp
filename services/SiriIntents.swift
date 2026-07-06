@@ -1,7 +1,6 @@
 import AppIntents
 import Foundation
 
-// MARK: – "يا سيري سجّل جرعة ٧ وحدات"
 struct LogInsulinDoseIntent: AppIntent {
 
     static var title: LocalizedStringResource = "تسجيل جرعة إنسولين"
@@ -58,7 +57,7 @@ struct WazanShortcuts: AppShortcutsProvider {
     }
 }
 
-// MARK: – Bridge
+// 
 @MainActor
 final class SiriDoseBridge {
 

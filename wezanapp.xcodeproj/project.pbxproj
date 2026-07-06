@@ -36,11 +36,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		CAA2EE3E2F58E55A003F4D35 /* Utilities */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Utilities;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +52,6 @@
 		CAA2EE202F58E4EC003F4D35 = {
 			isa = PBXGroup;
 			children = (
-				CAA2EE3E2F58E55A003F4D35 /* Utilities */,
 				CAA2EE3D2F58E550003F4D35 /* Resources */,
 				CAA2EE3C2F58E541003F4D35 /* views */,
 				CAA2EE3B2F58E530003F4D35 /* services */,
@@ -96,7 +90,6 @@
 				CAA2EE3B2F58E530003F4D35 /* services */,
 				CAA2EE3C2F58E541003F4D35 /* views */,
 				CAA2EE3D2F58E550003F4D35 /* Resources */,
-				CAA2EE3E2F58E55A003F4D35 /* Utilities */,
 			);
 			name = wezanapp;
 			packageProductDependencies = (

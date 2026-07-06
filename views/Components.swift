@@ -10,7 +10,6 @@ struct WazanDrop: View {
     }
 }
 
-// MARK: – Card (matches white rounded cards in design)
 struct WCard<C: View>: View {
     var padding: CGFloat = 16
     var bg: Color = .wCard
@@ -23,7 +22,6 @@ struct WCard<C: View>: View {
     }
 }
 
-// MARK: – Section header  (e.g. "اليوم", "أمس")
 struct WSectionHeader: View {
     let title: String
     var body: some View {
@@ -37,7 +35,6 @@ struct WSectionHeader: View {
     }
 }
 
-// MARK: – Status chip (مرتفع / طبيعي / منخفض)
 struct WStatusChip: View {
     let status: GlucoseStatus
     var body: some View {
@@ -50,7 +47,6 @@ struct WStatusChip: View {
     }
 }
 
-// MARK: – Primary Button
 struct WPrimaryBtn: View {
     let title : String
     let icon  : String?
@@ -75,7 +71,6 @@ struct WPrimaryBtn: View {
     }
 }
 
-// MARK: – Secondary (outline) button
 struct WSecondaryBtn: View {
     let title : String
     let action: () -> Void
@@ -93,7 +88,6 @@ struct WSecondaryBtn: View {
     }
 }
 
-// MARK: – Setting Row  (used in Settings)
 struct WSettingRow<T: View>: View {
     let icon    : String
     let iconBg  : Color
@@ -122,15 +116,13 @@ struct WSettingRow<T: View>: View {
         .padding(.vertical, 12)
     }
 }
-
-// MARK: – List Row (dose item)
+//
 struct DoseListRow: View {
     let dose: DoseRecord
     let unit: GlucoseUnit
 
     var body: some View {
         HStack(spacing: 12) {
-            // Type icon
             ZStack {
                 Circle().fill(dose.insulinType.color.opacity(0.12)).frame(width: 36, height: 36)
                 Image(systemName: dose.insulinType.sfSymbol)
@@ -172,7 +164,6 @@ struct DoseListRow: View {
     }
 }
 
-// MARK: – Glucose Sparkline
 struct GlucoseSparkline: View {
     let readings   : [GlucoseReading]
     let unit       : GlucoseUnit
@@ -197,7 +188,6 @@ struct GlucoseSparkline: View {
                 )
             }
 
-            // Target band
             let tL = unit.display(targetLow);  let tH = unit.display(targetHigh)
             let bandY  = h - CGFloat(ny(tH)) * h
             let bandH  = h - CGFloat(ny(tL)) * h - bandY
@@ -210,7 +200,6 @@ struct GlucoseSparkline: View {
                 ctx.stroke(dash, with: .color(c.opacity(0.4)), style: StrokeStyle(lineWidth: 1, dash: [4, 3]))
             }
 
-            // Area
             var area = Path()
             area.move(to: CGPoint(x: 0, y: h))
             area.addLine(to: pt(0))
@@ -222,13 +211,11 @@ struct GlucoseSparkline: View {
                 startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 0, y: h)
             ))
 
-            // Line
             var line = Path()
             line.move(to: pt(0))
             for i in 1 ..< readings.count { line.addLine(to: pt(i)) }
             ctx.stroke(line, with: .color(.wPrimary), style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round))
 
-            // Dots
             for i in readings.indices {
                 let p = pt(i); let isLast = i == readings.count - 1
                 let r: CGFloat = isLast ? 5 : 3
@@ -241,7 +228,6 @@ struct GlucoseSparkline: View {
     }
 }
 
-// MARK: – Share sheet wrapper
 struct ShareSheet: UIViewControllerRepresentable {
     let url: URL
     func makeUIViewController(context: Context) -> UIActivityViewController {
@@ -250,7 +236,6 @@ struct ShareSheet: UIViewControllerRepresentable {
     func updateUIViewController(_ vc: UIActivityViewController, context: Context) {}
 }
 
-// MARK: – Toast
 struct WToast: View {
     let msg: String
     var body: some View {

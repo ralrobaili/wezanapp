@@ -23,7 +23,6 @@ enum GlucoseUnit: String, Codable, CaseIterable {
     }
 }
 
-// MARK: – Glucose Status
 enum GlucoseStatus {
     case low, normal, high
     init(mgdL: Double) {
@@ -41,7 +40,6 @@ enum GlucoseStatus {
     var chipBg: Color { color.opacity(0.15) }
 }
 
-// MARK: – Glucose Reading
 struct GlucoseReading: Identifiable, Equatable {
     let id        : UUID   = UUID()
     let valueMgdL : Double
@@ -51,7 +49,6 @@ struct GlucoseReading: Identifiable, Equatable {
     func display(_ unit: GlucoseUnit) -> String { unit.displayString(valueMgdL) }
 }
 
-// MARK: – Insulin Type
 enum InsulinType: String, Codable, CaseIterable, Identifiable {
     case rapid  = "سريع المفعول"
     case long   = "طويل المفعول"
